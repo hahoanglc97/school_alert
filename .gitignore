@@ -1,0 +1,4 @@
+node_modules/
+music/*.mp3
+music/manifest.json
+data/schedule.json

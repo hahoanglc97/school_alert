@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="vi">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Nhạc trường học</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="app-shell">
+      <aside class="sidebar">
+        <a class="brand" href="#dashboard"><span class="brand-mark">♪</span><span>nhạc<br /><b>trường học</b></span></a>
+        <nav aria-label="Điều hướng chính">
+          <button class="nav-link active" data-view="dashboard"><span>⌂</span> Tổng quan</button>
+          <button class="nav-link" data-view="music"><span>♫</span> Thư viện nhạc</button>
+          <button class="nav-link" data-view="schedule"><span>▦</span> Lịch hằng tuần</button>
+          <button class="nav-link" data-view="settings"><span>⚙</span> Cài đặt</button>
+        </nav>
+        <div class="sidebar-footer"><span class="status-dot"></span><span>Trình phát đang trực tuyến</span><small>Trình phát trên trình duyệt</small></div>
+      </aside>
+
+      <main>
+        <header class="topbar">
+          <div><p class="eyebrow" id="today-label">THỨ HAI · 15 THÁNG 9</p><h1 id="page-title">Chào buổi sáng.</h1></div>
+          <div class="clock"><span id="clock-time">--:--:--</span><small id="timezone-label">Asia/Ho_Chi_Minh</small></div>
+        </header>
+
+        <section id="dashboard" class="view active">
+          <div class="player-hero">
+            <div class="live-indicator"><span></span><b id="status-text">CHƯA PHÁT</b></div>
+            <div class="hero-main"><p>ĐANG PHÁT</p><h2 id="now-title">Không gian đang yên tĩnh.</h2><p id="now-detail">Lịch phát tiếp theo sẽ hiển thị ở đây.</p></div>
+            <div class="hero-art"><div class="disc">♪</div></div>
+            <div class="hero-progress"><span id="progress-start">—</span><div class="progress-track"><i id="schedule-progress"></i></div><span id="progress-end">—</span></div>
+          </div>
+
+          <div class="dashboard-grid">
+            <section class="panel next-panel"><div class="panel-heading"><div><p class="eyebrow">SẮP TỚI</p><h3>Lịch phát tiếp theo</h3></div><button class="text-button" data-goto="schedule">Xem lịch →</button></div><div id="next-schedule" class="next-empty">Chưa có lịch phát sắp tới.</div></section>
+            <section class="panel controls-panel"><div class="panel-heading"><div><p class="eyebrow">KIỂM TRA LOA</p><h3>Điều khiển thủ công</h3></div><span id="mode-pill" class="mode-pill">THEO LỊCH</span></div><div class="manual-row"><select id="manual-audio" aria-label="Chọn nhạc để phát thủ công"></select><button id="manual-play" class="round-control" aria-label="Phát">▶</button><button id="manual-stop" class="round-control quiet" aria-label="Dừng">■</button></div><label class="volume"><span>Âm lượng</span><input id="volume" type="range" min="0" max="100" value="75" /><output id="volume-output">75%</output></label></section>
+          </div>
+
+          <section class="schedule-strip"><div class="strip-heading"><div><p class="eyebrow">HÔM NAY</p><h3>Lịch phát hôm nay</h3></div><button class="primary-button" data-goto="schedule">Quản lý lịch <span>→</span></button></div><div id="today-schedule" class="today-list"></div></section>
+          <p class="autoplay-note">Tính năng tự phát cần được cấp quyền một lần trên trình duyệt. <button id="enable-player" class="inline-link">Bật trình phát nhạc</button></p>
+        </section>
+
+        <section id="music" class="view">
+          <div class="section-heading"><div><p class="eyebrow">KHO ÂM THANH</p><h2>Thư viện nhạc</h2><p>Tải lên các tệp MP3 để dùng trong lịch phát hằng tuần.</p></div><label class="primary-button upload-button">Tải MP3 lên <input id="file-upload" type="file" accept="audio/mpeg,.mp3" multiple /></label></div>
+          <div id="upload-message" class="message" role="alert"></div>
+          <div class="panel library-panel"><div class="library-head"><span>TỆP</span><span>ĐÃ THÊM</span><span>NGHE THỬ</span><span></span></div><div id="library-list" class="library-list"></div></div>
+        </section>
+
+        <section id="schedule" class="view">
+          <div class="section-heading"><div><p class="eyebrow">LỊCH HẰNG TUẦN</p><h2>Lịch phát nhạc</h2><p>Thiết lập âm nhạc cho ngày học. Thời gian dùng múi giờ của trường.</p></div></div>
+          <div id="schedule-message" class="message" role="alert"></div>
+          <div id="week-grid" class="week-grid"></div>
+        </section>
+
+        <section id="settings" class="view">
+          <div class="section-heading"><div><p class="eyebrow">CÀI ĐẶT HỆ THỐNG</p><h2>Cài đặt trình phát</h2><p>Các cài đặt này được lưu trên server.</p></div></div>
+          <div id="settings-message" class="message" role="alert"></div>
+          <div class="panel settings-card"><label>Múi giờ của trường<select id="timezone-select"><option value="Asia/Ho_Chi_Minh">Asia/Ho_Chi_Minh</option><option value="Asia/Tokyo">Asia/Tokyo</option><option value="Asia/Bangkok">Asia/Bangkok</option><option value="Asia/Singapore">Asia/Singapore</option><option value="Europe/London">Europe/London</option><option value="America/New_York">America/New_York</option></select></label><label class="toggle-row"><span><b>Bật bộ lập lịch</b><small>Tự động bắt đầu và dừng nhạc theo lịch.</small></span><input id="scheduler-enabled" type="checkbox" /><i></i></label><label class="toggle-row"><span><b>Dùng một bài nhạc cho tất cả lịch phát</b><small>Khi bật, mọi lịch phát sẽ dùng chung một tệp nhạc bên dưới, bỏ qua lựa chọn riêng của từng lịch.</small></span><input id="single-song-enabled" type="checkbox" /><i></i></label><label id="default-audio-row">Bài nhạc dùng chung<select id="default-audio"></select></label></div>
+        </section>
+      </main>
+    </div>
+
+    <dialog id="schedule-dialog"><form id="schedule-form" method="dialog"><div class="dialog-heading"><div><p class="eyebrow" id="dialog-day">THỨ HAI</p><h2 id="dialog-title">Thêm lịch phát</h2></div><button class="close-button" value="cancel" aria-label="Đóng">×</button></div><input type="hidden" id="schedule-id" /><input type="hidden" id="schedule-day" /><div class="form-grid"><label>Giờ bắt đầu<input id="start-time" type="time" required /></label><label>Giờ kết thúc<input id="end-time" type="time" required /></label></div><label>Tệp nhạc<select id="schedule-audio" required></select></label><small id="schedule-audio-hint" class="hint"></small><label class="toggle-row"><span><b>Bật lịch phát này</b><small>Lịch đã tắt vẫn được lưu nhưng sẽ bị bỏ qua.</small></span><input id="schedule-enabled" type="checkbox" checked /><i></i></label><p id="form-error" class="form-error"></p><div class="dialog-actions"><button value="cancel" class="secondary-button">Hủy</button><button id="save-schedule" value="default" class="primary-button">Lưu lịch</button></div></form></dialog>
+    <audio id="audio-player"></audio>
+    <script src="app.js"></script>
+  </body>
+</html>

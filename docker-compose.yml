@@ -1,0 +1,9 @@
+services:
+  school-sound:
+    build: .
+    ports:
+      - "4173:4173"
+    volumes:
+      - ./music:/app/music
+      - ./data:/app/data
+    restart: unless-stopped
