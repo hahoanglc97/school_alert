@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Nhạc trường học</title>
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%23f4ca63'/%3E%3Ctext x='16' y='23' font-family='Arial,sans-serif' font-size='19' font-weight='bold' fill='%23142b3f' text-anchor='middle'%3E♪%3C/text%3E%3C/svg%3E" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
@@ -12,7 +13,8 @@
   <body>
     <div class="app-shell">
       <aside class="sidebar">
-        <a class="brand" href="#dashboard"><span class="brand-mark">♪</span><span>nhạc<br /><b>trường học</b></span></a>
+        <span class="brand-mark">♪</span>
+        <a class="brand" href="#dashboard"><br /><span>Trường Phổ thông nội trú Tiểu học và THCS </br />Mường Khương</span></a>
         <nav aria-label="Điều hướng chính">
           <button class="nav-link active" data-view="dashboard"><span>⌂</span> Tổng quan</button>
           <button class="nav-link" data-view="music"><span>♫</span> Thư viện nhạc</button>
@@ -60,7 +62,7 @@
         <section id="settings" class="view">
           <div class="section-heading"><div><p class="eyebrow">CÀI ĐẶT HỆ THỐNG</p><h2>Cài đặt trình phát</h2><p>Các cài đặt này được lưu trên server.</p></div></div>
           <div id="settings-message" class="message" role="alert"></div>
-          <div class="panel settings-card"><label>Múi giờ của trường<select id="timezone-select"><option value="Asia/Ho_Chi_Minh">Asia/Ho_Chi_Minh</option><option value="Asia/Tokyo">Asia/Tokyo</option><option value="Asia/Bangkok">Asia/Bangkok</option><option value="Asia/Singapore">Asia/Singapore</option><option value="Europe/London">Europe/London</option><option value="America/New_York">America/New_York</option></select></label><label class="toggle-row"><span><b>Bật bộ lập lịch</b><small>Tự động bắt đầu và dừng nhạc theo lịch.</small></span><input id="scheduler-enabled" type="checkbox" /><i></i></label><label class="toggle-row"><span><b>Dùng một bài nhạc cho tất cả lịch phát</b><small>Khi bật, mọi lịch phát sẽ dùng chung một tệp nhạc bên dưới, bỏ qua lựa chọn riêng của từng lịch.</small></span><input id="single-song-enabled" type="checkbox" /><i></i></label><label id="default-audio-row">Bài nhạc dùng chung<select id="default-audio"></select></label></div>
+          <div class="panel settings-card"><label>Múi giờ của trường<select id="timezone-select"><option value="Asia/Ho_Chi_Minh">Asia/Ho_Chi_Minh</option><option value="Asia/Tokyo">Asia/Tokyo</option><option value="Asia/Bangkok">Asia/Bangkok</option><option value="Asia/Singapore">Asia/Singapore</option><option value="Europe/London">Europe/London</option><option value="America/New_York">America/New_York</option></select></label><label class="toggle-row"><span><b>Bật bộ lập lịch</b><small>Tự động bắt đầu và dừng nhạc theo lịch.</small></span><input id="scheduler-enabled" type="checkbox" /><i></i></label><label class="toggle-row"><span><b>Dùng một bài nhạc cho tất cả lịch phát</b><small>Khi bật, mọi lịch phát sẽ dùng chung một tệp nhạc bên dưới, bỏ qua lựa chọn riêng của từng lịch.</small></span><input id="single-song-enabled" type="checkbox" /><i></i></label><label id="default-audio-row">Bài nhạc dùng chung<select id="default-audio"></select></label><label>Fade in (giây)<input id="fade-in-seconds" type="number" min="0" step="0.5" /></label><label>Fade out (giây)<input id="fade-out-seconds" type="number" min="0" step="0.5" /></label></div>
         </section>
       </main>
     </div>
