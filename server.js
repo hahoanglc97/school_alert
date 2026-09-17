@@ -51,7 +51,7 @@ const upload = multer({
 app.use(express.json({ limit: '1mb' }));
 app.use(express.static(__dirname, {
   setHeaders: (res, filePath) => {
-    if (/\.(html|js|css)$/.test(filePath)) res.setHeader('Cache-Control', 'no-cache');
+    if (/\.(html|js|css)$/.test(filePath)) res.setHeader('Cache-Control', 'no-store, no-cache, must-revalidate');
   },
 }));
 app.use('/music', express.static(MUSIC_DIR));
