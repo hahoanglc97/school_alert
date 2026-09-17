@@ -49,8 +49,13 @@ const upload = multer({
 });
 
 app.use(express.json({ limit: '1mb' }));
-app.use(express.static(__dirname));
+app.use(express.static(__dirname, {
+  setHeaders: (res, filePath) => {
+    if (/\.(html|js|css)$/.test(filePath)) res.setHeader('Cache-Control', 'no-cache');
+  },
+}));
 app.use('/music', express.static(MUSIC_DIR));
+app.use('/api', (req, res, next) => { res.setHeader('Cache-Control', 'no-store'); next(); });
 
 app.get('/api/music', (req, res) => {
   res.json(readManifest());
@@ -106,6 +111,7 @@ app.put('/api/schedule', (req, res) => {
 });
 
 app.use((err, req, res, next) => {
+  console.error(err);
   res.status(400).json({ error: err.message || 'Tải lên thất bại.' });
 });
 

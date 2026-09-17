@@ -4,6 +4,6 @@ services:
     ports:
       - "4173:4173"
     volumes:
-      - ./music:/app/music
-      - ./data:/app/data
+      - ./music:/app/music:z
+      - ./data:/app/data:z
     restart: unless-stopped
