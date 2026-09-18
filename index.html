@@ -18,6 +18,7 @@
           <button class="nav-link active" data-view="dashboard"><span>⌂</span> Tổng quan</button>
           <button class="nav-link" data-view="music"><span>♫</span> Thư viện nhạc</button>
           <button class="nav-link" data-view="schedule"><span>▦</span> Lịch hằng tuần</button>
+          <button class="nav-link" data-view="schedule2"><span>▤</span> Lịch theo mẫu</button>
           <button class="nav-link" data-view="settings"><span>⚙</span> Cài đặt</button>
         </nav>
         <div class="sidebar-footer"><span class="status-dot"></span><span>Trình phát đang trực tuyến</span><small>Trình phát trên trình duyệt</small></div>
@@ -56,6 +57,28 @@
           <div class="section-heading"><div><p class="eyebrow">LỊCH HẰNG TUẦN</p><h2>Lịch phát nhạc</h2><p>Thiết lập âm nhạc cho ngày học. Thời gian dùng múi giờ của trường.</p></div></div>
           <div id="schedule-message" class="message" role="alert"></div>
           <div id="week-grid" class="week-grid"></div>
+        </section>
+
+        <section id="schedule2" class="view">
+          <div class="section-heading"><div><p class="eyebrow">LỊCH THEO MẪU</p><h2>Cấu hình một lần, áp dụng cho nhiều ngày</h2><p>Tạo các khung giờ phát nhạc, rồi chọn những ngày trong tuần sẽ dùng chung khung giờ này.</p></div></div>
+          <div id="schedule2-message" class="message" role="alert"></div>
+
+          <div class="panel">
+            <div class="panel-heading"><div><p class="eyebrow">BƯỚC 1</p><h3>Khung giờ phát nhạc</h3></div>
+              <label class="template-load"><span>Tải từ ngày có sẵn</span><select id="template-load-day"><option value="">— Bắt đầu trống —</option></select></label>
+            </div>
+            <div id="template-entries" class="template-entries"></div>
+            <button id="template-add-entry" class="add-button" type="button">+ Thêm khung giờ</button>
+          </div>
+
+          <div class="panel" style="margin-top:20px">
+            <div class="panel-heading"><div><p class="eyebrow">BƯỚC 2</p><h3>Áp dụng cho các ngày</h3></div>
+              <span><button id="template-select-all" class="text-button" type="button">Chọn tất cả</button><button id="template-select-none" class="text-button" type="button">Bỏ chọn</button></span>
+            </div>
+            <div id="template-days" class="template-days"></div>
+            <p class="hint">Áp dụng sẽ thay thế toàn bộ lịch hiện có của những ngày được chọn bằng các khung giờ ở trên.</p>
+            <div class="template-actions"><button id="template-apply" class="primary-button" type="button">Áp dụng cho các ngày đã chọn</button></div>
+          </div>
         </section>
 
         <section id="settings" class="view">
